@@ -1,0 +1,5 @@
+my_fav_numbers = set([7, 6])
+my_fav_numbers.remove(6)
+friend_fav_numbers = set([5])
+our_fav_numbers = str(my_fav_numbers) + str(friend_fav_numbers)
+print("Our favorite numbers:" + our_fav_numbers)
