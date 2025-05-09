@@ -1,4 +1,4 @@
-from game import Game 
+from game import Game
 
 def get_user_menu_choice():
     print("\nChoose an option:")
@@ -15,12 +15,15 @@ def get_user_menu_choice():
         return 'quit'
     else:
         return None  
+
 def print_results(results):
     print("\nGame Results:")
     print(f"Wins:   {results.get('win', 0)}")
     print(f"Losses: {results.get('loss', 0)}")
     print(f"Draws:  {results.get('draw', 0)}")
     print("Thanks for playing!")
+
+
 def main():
     results = {'win': 0, 'loss': 0, 'draw': 0}
 
@@ -29,7 +32,7 @@ def main():
 
         if choice == 'play':
             game = Game()
-            result = game.play() 
+            result = game.play_game() 
             if result in results:
                 results[result] += 1
         elif choice == 'scores':
