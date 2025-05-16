@@ -1,3 +1,4 @@
+#testing
 import psycopg2
 
 DB_NAME = "dvdrental"
