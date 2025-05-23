@@ -1,0 +1,38 @@
+body {
+    font-family: Arial, Arial, Helvetica, sans-serif;
+    padding: 20px;
+    background-color: brown;
+    text-align: center;
+    color: rgb(24, 14, 0);
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    color: antiquewhite;
+     
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.task-item .text {
+    margin-left: 10px;
+    flex-grow: 1;
+    font-size: 25px;
+    text-align: center;
+}
+
+.task-item .delete {
+    margin-left: 10px;
+    color: white;
+    cursor: pointer;
+}
+
+.done {
+    text-decoration: line-through;
+    color: white;
+}
