@@ -1,34 +1,19 @@
-const h1 = document.querySelector("h1");
-console.log(h1);
+const form = document.querySelector('form');
 
-const article = document.querySelector("article");
-const lastParagraph = article.lastElementChild;
-article.removeChild(lastParagraph);
+form.addEventListener('submit', function(event) {
+event.preventDefault();
 
-const h2 = document.querySelector("h2");
-h2.addEventListener("click", function() {
-  h2.style.backgroundColor = "red";
-});
+const radius = document.getElementById('radius').value;
+console.log(radius);
 
-const h3 = document.querySelector("h3");
-h3.addEventListener("click", function() {
-  h3.style.display = "none";
-});
+if (isNaN(radius) || radius <= 0) {
+    alert('Please enter a valid positive number for radius.');
+    return;
+}
 
-const boldBtn = document.getElementById("boldBtn");
-const paragraphs = document.querySelectorAll("article p");
+const volume = (4 / 3) * Math.PI * Math.pow(radius, 3);
 
-boldBtn.addEventListener("click", function() {
-  paragraphs.forEach(p => {
-    p.style.fontWeight = "bold";
-  });
-});
-
-h1.addEventListener("mouseover", function() {
-  const randomSize = Math.floor(Math.random() * 101);
-  h1.style.fontSize = randomSize + "px";
-});
-
-paragraphs[1].addEventListener("mouseover", function() {
-  paragraphs[1].classList.add("fade");
+const vlElement = document.getElementById('volume')
+vlElement.value = volume.toFixed(2);
+// console.log("value: " , vlElement.value);
 });

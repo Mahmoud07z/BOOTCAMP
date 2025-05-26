@@ -1,29 +1,41 @@
+// Retrieve the inputs by their name attribute and console.log them.
+
+const log = console.log;
+
 const form = document.querySelector("form");
-console.log(form);
+log(form);
 
-const fnameInput = document.getElementById("fname");
-const lnameInput = document.getElementById("lname");
-console.log(fnameInput, lnameInput);
+const input1 = document.getElementById("fname");
+log(input1);
+const input2 = document.getElementById("lname");
+log(input2);
+const submitInput = document.getElementById("submit");
+log(submitInput);
 
-const nameInputs = document.getElementsByName("firstname");
-const lastNameInputs = document.getElementsByName("lastname");
-console.log(nameInputs[0], lastNameInputs[0]);
-
-const ul = document.querySelector(".usersAnswer");
+const firstName = document.getElementsByName("firstname")[0];
+const lastName = document.getElementsByName("lastname")[0];
+log(firstName);
+log(lastName);
 
 form.addEventListener("submit", function(event) {
-  event.preventDefault();
+  event.preventDefault(); // to prevents the page from reloading
 
-  const firstName = fnameInput.value.trim();
-  const lastName = lnameInput.value.trim();
+  const firstName = input1.value.trim();
+  const lastName = input2.value.trim();
 
-  if (firstName !== "" && lastName !== "") {
-    const li1 = document.createElement("li");
-    li1.textContent = firstName;
-    const li2 = document.createElement("li");
-    li2.textContent = lastName;
-
-    ul.appendChild(li1);
-    ul.appendChild(li2);
+  if (firstName === "" || lastName === "") {
+    alert("Both fields are required.");
+    return;
   }
+
+  const ul = document.querySelector("ul");
+
+  const li1 = document.createElement("li");
+  li1.textContent = firstName;
+
+  const li2 = document.createElement("li");
+  li2.textContent = lastName;
+
+  ul.appendChild(li1);
+  ul.appendChild(li2);
 });

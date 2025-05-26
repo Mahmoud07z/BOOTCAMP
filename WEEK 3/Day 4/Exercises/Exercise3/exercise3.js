@@ -1,23 +1,31 @@
-let allBoldItems;
+const allBoldItems = [];
+
 
 function getBoldItems() {
-  allBoldItems = document.querySelectorAll("strong");
-}
+    const boldItems = document.querySelectorAll("strong");
+    allBoldItems.push(...boldItems);
+    }
 
 function highlight() {
-  allBoldItems.forEach(item => {
-    item.style.color = "blue";
-  });
+    allBoldItems.forEach(item => {
+        item.style.color = "blue";
+    });
 }
 
 function returnItemsToDefault() {
-  allBoldItems.forEach(item => {
-    item.style.color = "black";
-  });
+    allBoldItems.forEach(item => {
+        item.style.color = "black";
+    });
 }
 
-getBoldItems();
+const p = document.querySelector("p");
 
-const paragraph = document.querySelector("p");
-paragraph.addEventListener("mouseover", highlight);
-paragraph.addEventListener("mouseout", returnItemsToDefault);
+getBoldItems()
+p.addEventListener("mouseover", () => {
+    highlight();
+});
+
+p.addEventListener("mouseout", () => {
+    returnItemsToDefault();
+});
+
