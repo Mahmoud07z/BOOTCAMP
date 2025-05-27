@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Juice Bar</title>
+</head>
+<body>
+
+<div id="juice-output"></div>
+
+<script>
+function makeJuice(size) {
+  function addIngredients(ing1, ing2, ing3) {
+    const message = `The client wants a ${size} juice, containing ${ing1}, ${ing2}, ${ing3}.`;
+    document.getElementById('juice-output').textContent = message;
+  }
+  
+  // Invoke inner function ONCE inside outer function
+  addIngredients('apple', 'banana', 'orange');
+}
+
+// Invoke outer function in global scope
+makeJuice('medium');
+</script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Juice Bar - Part II</title>
+</head>
+<body>
+
+<div id="juice-output"></div>
+
+<script>
+function makeJuice(size) {
+  const ingredients = [];
+
+  function addIngredients(ing1, ing2, ing3) {
+    ingredients.push(ing1, ing2, ing3);
+  }
+
+  function displayJuice() {
+    const message = `The client wants a ${size} juice, containing ${ingredients.join(', ')}.`;
+    document.getElementById('juice-output').textContent = message;
+  }
+
+  // Add ingredients TWICE (6 ingredients total)
+  addIngredients('apple', 'banana', 'orange');
+  addIngredients('strawberry', 'mango', 'pineapple');
+
+  // Display the juice description
+  displayJuice();
+}
+
+// Invoke the outer function globally
+makeJuice('large');
+</script>
+
+</body>
+</html>
