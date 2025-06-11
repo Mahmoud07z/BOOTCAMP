@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Wars Character Finder</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Press+Start+2P&display=swap');
+        body {
+    background-color: #000;
+    color: #ffe81f;
+    font-family: 'League Spartan', sans-serif;
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+    perspective: 400px;
+    overflow: hidden;
+    position: relative;
+}
+
+h1 {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 5em;
+    margin: 0.1em 0;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: #ffe81f;
+    text-shadow: 0 0 15px #ffe81f;
+    font-weight: 700;
+    line-height: 1;
+    word-spacing: 0.8em;
+}
+        
+        /* Starry background */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            animation: twinkle var(--duration) infinite ease-in-out;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        
+        
+        .character-info {
+            background-color: rgba(0, 0, 0, 0.7);
+            border: 2px solid #ffe81f;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 30px 0;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(255, 232, 31, 0.3);
+        }
+        
+        .character-info p {
+            font-size: 1.5em;
+            margin: 0.5em 0;
+        }
+        
+        button {
+            background-color: #000;
+            color: #ffe81f;
+            border: 2px solid #ffe81f;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            font-family: 'Pathway Gothic One', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        button:hover {
+            background-color: #ffe81f;
+            color: #000;
+            box-shadow: 0 0 20px #ffe81f;
+        }
+        
+        .loading {
+            font-size: 2em;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
+        
+        .error {
+            color: #ff3333;
+            font-size: 1.5em;
+            text-shadow: 0 0 5px #ff3333;
+        }
+    </style>
+</head>
+<body>
+    <!-- Starry background -->
+    <div class="stars" id="stars"></div>
+    
+    <div class="container">
+        <h1>STAR WARS</h1>
+        <div class="character-info" id="character-info">
+            <p>Click the button to find a character!</p>
+        </div>
+        <button id="find-btn">Find Someone</button>
+    </div>
+
+    <script src="exercise1.js"></script>
+</body>
+</html>
