@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emoji Guessing Game</title>
+  <style>
+    body { font-family: Arial; text-align: center; margin-top: 50px; }
+    button { margin: 10px; padding: 10px 20px; font-size: 16px; }
+    #feedback { font-weight: bold; margin: 20px; }
+    #emoji { font-size: 100px; margin: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Emoji Guessing Game 🎮</h1>
+  <div id="emoji"></div>
+  <div id="emoji" style="font-size: 100px; margin: 20px;"></div>
+  <div id="options"></div>
+  <div id="feedback"></div>
+  <h2>🏆 Leaderboard</h2>
+  <ol id="leaderboard"></ol>
+
+  <script>
+    async function loadQuestion() {
+      const res = await fetch('/question');
+      const data = await res.json();
+
+      document.getElementById('score').textContent = 'Score: ' + data.score;
+      document.getElementById('emoji').textContent = data.emoji;
+
+      const optionsDiv = document.getElementById('options');
+      optionsDiv.innerHTML = '';
+      data.options.forEach(option => {
+        const btn = document.createElement('button');
+        btn.textContent = option;
+        btn.onclick = () => makeGuess(option);
+        optionsDiv.appendChild(btn);
+      });
+
+      document.getElementById('feedback').textContent = '';
+    }
+
+    async function makeGuess(option) {
+      const res = await fetch('/guess', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ guess: option })
+      });
+
+      const result = await res.json();
+      const feedback = document.getElementById('feedback');
+      feedback.textContent = result.result === 'correct' ? '✅ Correct!' : `❌ Wrong! It was "${result.correct}"`;
+
+      await loadQuestion();
+      updateLeaderboard();
+    }
+
+    async function updateLeaderboard() {
+      const res = await fetch('/leaderboard');
+      const data = await res.json();
+
+      const board = document.getElementById('leaderboard');
+      board.innerHTML = '';
+      data.forEach((entry, i) => {
+        const li = document.createElement('li');
+        li.textContent = `Score: ${entry.score}`;
+        board.appendChild(li);
+      });
+    }
+
+    loadQuestion();
+    updateLeaderboard();
+  </script>
+</body>
+</html>
