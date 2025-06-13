@@ -1,0 +1,21 @@
+<div class="container mt-4">
+  <% if (!posts || posts.length === 0) { %>
+    <p>No posts found.</p>
+  <% } else { %>
+    <% posts.forEach(post => { %>
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5>
+            <a href="<%= post.link %>" target="_blank" rel="noopener noreferrer">
+              <%= post.title %>
+            </a>
+          </h5>
+          <p><strong>Date:</strong> <%= post.pubDate %></p>
+          <p><strong>Creator:</strong> <%= post.creator || 'Unknown' %></p>
+          <p><strong>Category:</strong> <%= post.categories ? post.categories.join(', ') : 'None' %></p>
+          <p><%= post.contentSnippet || post.content || '' %></p>
+        </div>
+      </div>
+    <% }) %>
+  <% } %>
+</div>
