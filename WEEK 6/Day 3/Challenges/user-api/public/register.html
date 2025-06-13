@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register</title>
+</head>
+<body>
+  <h2>Register</h2>
+  <form id="registerForm">
+    <input type="text" id="first_name" placeholder="First Name" required><br />
+    <input type="text" id="last_name" placeholder="Last Name" required><br />
+    <input type="email" id="email" placeholder="Email" required><br />
+    <input type="text" id="username" placeholder="Username" required><br />
+    <input type="password" id="password" placeholder="Password" required><br />
+    <button type="submit" id="registerBtn" disabled>Register</button>
+  </form>
+
+  <p id="registerMessage"></p>
+
+  <script>
+    const form = document.getElementById('registerForm');
+    const btn = document.getElementById('registerBtn');
+
+    form.addEventListener('input', () => {
+      const inputs = form.querySelectorAll('input');
+      btn.disabled = [...inputs].some(input => input.value.trim() === '');
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = {
+        first_name: form.first_name.value,
+        last_name: form.last_name.value,
+        email: form.email.value,
+        username: form.username.value,
+        password: form.password.value,
+      };
+
+      const res = await fetch('/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      const result = await res.json();
+      document.getElementById('registerMessage').innerText = result.message;
+    });
+  </script>
+</body>
+</html>
