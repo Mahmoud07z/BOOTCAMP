@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trivia Quiz Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>Trivia Quiz</h1>
+    <div id="quiz-status"></div>
+    <div id="question-container" class="hidden">
+      <p id="question-text"></p>
+      <div id="progress">Question <span id="current-question">1</span> of <span id="total-questions">3</span></div>
+      <input type="text" id="answer-input" placeholder="Your answer...">
+      <button id="submit-btn">Submit Answer</button>
+    </div>
+    <div id="feedback-container" class="hidden"></div>
+    <div id="score-container" class="hidden"></div>
+    <button id="start-btn">Start Quiz</button>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
