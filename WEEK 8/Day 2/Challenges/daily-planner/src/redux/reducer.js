@@ -6,7 +6,7 @@ const initialState = {
 };
 
 export const reducer = (state = initialState, action) => {
-  const { tasksByDay, selectedDay } = state;
+  const { tasksByDay } = state;
   const { day, id, text } = action.payload || {};
   let updatedTasks;
 
